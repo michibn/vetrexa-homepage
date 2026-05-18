@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Vetrexa GmbH – Independent Consulting | IAM, Security, Strategy & Digital Transformation</title>
+<meta name="description" content="Vetrexa GmbH – Unabhängige IT-Beratung für IAM, Security, Strategy, Performance und Managed Services. Quadient Experience Partner & NEXIS Silver Partner. Monheim am Rhein."/>
+<meta name="keywords" content="Vetrexa, Independent Consulting, IAM, Identity Access Management, NEXIS 4, Quadient Inspire, Security, Strategy, Managed Services, Digitalisierung, Monheim"/>
+<meta property="og:title" content="Vetrexa GmbH – Independent Consulting"/>
+<meta property="og:description" content="Unabhängige IT-Beratung für IAM, Security, Strategy, Performance und Managed Services."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://vetrexa.com"/>
+<link rel="canonical" href="https://vetrexa.com/"/>
+<link rel="alternate" hreflang="de" href="https://vetrexa.com/"/>
+<link rel="alternate" hreflang="en" href="https://vetrexa.com/en/"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#07091a;--bg2:#0b0e22;--bg3:#0e1328;
+  --vb:#2b6cb0;--vb2:#4a90d9;--vn:#1a365d;--vl:#7ec8f7;
+  --text:#eef2f7;--text2:#8aa5c4;--text3:#506b8a;
+  --bdr:#1c2d48;--bdr2:#263d5e;
+  --gl:rgba(43,108,176,.06);--gb:rgba(43,108,176,.16);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+
+/* PAGE SYSTEM */
+.page{display:none;min-height:100vh}
+.page.active{display:block}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:.85rem 5%;display:flex;align-items:center;justify-content:space-between;background:rgba(7,9,26,.93);backdrop-filter:blur(22px);border-bottom:1px solid var(--bdr)}
+.logo{display:flex;align-items:center;cursor:pointer}
+.navlinks{display:flex;gap:1.8rem;list-style:none}
+.navlinks a{color:var(--text2);text-decoration:none;font-size:.85rem;font-weight:500;transition:.2s;cursor:pointer}
+.navlinks a:hover,.navlinks a.active{color:var(--text)}
+.navr{display:flex;align-items:center;gap:.8rem}
+.lang{display:flex;background:var(--gl);border:1px solid var(--gb);border-radius:7px;overflow:hidden}
+.lb{padding:.36rem .72rem;font-size:.75rem;font-weight:700;cursor:pointer;border:none;background:transparent;color:var(--text2);transition:.2s}
+.lb.on{background:var(--vb);color:#fff}
+.ncta{background:var(--vb);color:#fff;padding:.46rem 1.1rem;border-radius:8px;font-size:.82rem;font-weight:600;text-decoration:none;cursor:pointer;transition:.2s;border:none;font-family:inherit}
+.ncta:hover{background:var(--vb2)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:.3rem;background:none;border:none}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text2);border-radius:2px;transition:.3s}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mmenu{display:none;position:fixed;top:64px;left:0;right:0;background:rgba(7,9,26,.97);backdrop-filter:blur(24px);border-bottom:1px solid var(--bdr);z-index:199;padding:1.2rem 6%;flex-direction:column;gap:.2rem}
+.mmenu.open{display:flex}
+.mmenu a{color:var(--text2);text-decoration:none;font-size:.95rem;font-weight:500;padding:.75rem 0;border-bottom:1px solid var(--bdr);cursor:pointer;transition:.2s}
+.mmenu a:last-child{border-bottom:none}
+.mmenu a:hover{color:var(--vb2)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:7rem 6% 5rem;position:relative;overflow:hidden}
+.hbg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% -5%,rgba(43,108,176,.2),transparent),radial-gradient(ellipse 50% 40% at 88% 88%,rgba(26,54,93,.14),transparent)}
+.hgrid{position:absolute;inset:0;background-image:linear-gradient(rgba(43,108,176,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(43,108,176,.055) 1px,transparent 1px);background-size:52px 52px}
+.hc{position:relative;max-width:860px;margin:0 auto}
+.hbadge{display:inline-flex;align-items:center;gap:.55rem;background:rgba(43,108,176,.1);border:1px solid rgba(43,108,176,.28);padding:.42rem 1rem;border-radius:50px;font-size:.77rem;color:var(--vb2);margin-bottom:1.8rem;font-weight:500}
+.hbadge::before{content:'';width:6px;height:6px;background:var(--vb2);border-radius:50%;animation:blink 2s infinite;flex-shrink:0}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+h1{font-size:clamp(2.6rem,5.5vw,4.8rem);font-weight:900;line-height:1.05;letter-spacing:-2px;margin-bottom:1.4rem}
+.hl{background:linear-gradient(130deg,var(--vb2),var(--vl));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hsub{font-size:1.07rem;color:var(--text2);max-width:620px;margin:0 auto 2.5rem;line-height:1.82}
+.hbtns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.bp{background:var(--vb);color:#fff;padding:.9rem 2.2rem;border-radius:10px;font-weight:700;text-decoration:none;transition:.25s;font-size:.93rem;cursor:pointer;border:none;font-family:inherit}
+.bp:hover{background:var(--vb2);transform:translateY(-2px);box-shadow:0 8px 28px rgba(43,108,176,.38)}
+.bs{background:transparent;border:1px solid rgba(43,108,176,.35);color:var(--text);padding:.9rem 2.2rem;border-radius:10px;font-weight:600;text-decoration:none;transition:.25s;font-size:.93rem;cursor:pointer;font-family:inherit}
+.bs:hover{border-color:var(--vb2);color:var(--vb2)}
+.htiles{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;margin-top:4rem;border:1px solid var(--bdr);border-radius:14px;overflow:hidden;max-width:700px;margin-left:auto;margin-right:auto}
+.htile{background:var(--bg2);padding:1.5rem 1.7rem;text-align:left;position:relative}
+.htile::before{content:'/';position:absolute;top:1rem;right:1.3rem;font-size:1.4rem;color:var(--bdr2);font-weight:300}
+.htile h4{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:.45rem}
+.htile p{font-size:.79rem;color:var(--text2);line-height:1.6}
+.htile:nth-child(odd){background:var(--vb)}
+.htile:nth-child(odd) h4{color:#fff}
+.htile:nth-child(odd) p{color:rgba(255,255,255,.75)}
+.htile:nth-child(odd)::before{color:rgba(255,255,255,.3)}
+.htile:nth-child(even){background:var(--vn)}
+.htile:nth-child(even) h4{color:var(--vl)}
+.htile:nth-child(even) p{color:var(--text2)}
+
+/* SECTIONS */
+section{padding:5.5rem 6%}
+.slabel{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:2.5px;color:var(--vb2);margin-bottom:.7rem;display:flex;align-items:center;gap:.45rem}
+.slabel::before{content:'';width:15px;height:2px;background:var(--vb2);flex-shrink:0}
+h2{font-size:clamp(1.8rem,3.4vw,2.65rem);font-weight:800;letter-spacing:-1px;margin-bottom:.9rem;line-height:1.14}
+.ssub{color:var(--text2);font-size:.95rem;max-width:600px;line-height:1.82;margin-bottom:3rem}
+.bg2{background:var(--bg2)}
+
+/* CARDS */
+.cgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.3rem}
+.cc{background:var(--gl);border:1px solid var(--gb);border-radius:14px;padding:1.75rem;transition:.3s;position:relative;overflow:hidden}
+.cc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--vn),var(--vb2));transform:scaleX(0);transition:.3s;transform-origin:left}
+.cc:hover::after{transform:scaleX(1)}
+.cc:hover{border-color:rgba(43,108,176,.36);transform:translateY(-3px);background:rgba(43,108,176,.09)}
+.cnum{font-size:.68rem;font-weight:700;color:var(--text3);letter-spacing:1px;margin-bottom:.8rem}
+.cc h3{font-size:1.02rem;font-weight:700;margin-bottom:.5rem}
+.cc p{color:var(--text2);font-size:.85rem;line-height:1.65}
+.cbullets{list-style:none;margin-top:.9rem;display:flex;flex-direction:column;gap:.35rem}
+.cbullets li{font-size:.82rem;color:var(--text2);display:flex;align-items:flex-start;gap:.5rem}
+.cbullets li::before{content:'→';color:var(--vb2);flex-shrink:0;font-size:.75rem;margin-top:1px}
+.estrip{display:flex;align-items:center;gap:.45rem;margin-top:1.1rem;padding-top:.9rem;border-top:1px solid var(--bdr)}
+.efaces{display:flex}
+.ef{width:26px;height:26px;border-radius:50%;background-color:var(--vn);border:2px solid var(--bg2);flex-shrink:0;background-image:var(--team-photo,none);background-size:200%}
+.ef+.ef{margin-left:-5px}
+.etxt{font-size:.71rem;color:var(--text2);margin-left:.4rem}
+
+/* ABOUT CARDS */
+.acard{background:var(--gl);border:1px solid var(--gb);border-radius:14px;padding:1.8rem;position:relative;overflow:hidden}
+.acard::before{content:'';position:absolute;top:0;left:0;right:0;height:2.5px;background:linear-gradient(90deg,var(--vn),var(--vb2))}
+.acard h3{font-size:.95rem;font-weight:700;margin-bottom:.55rem}
+.acard p{color:var(--text2);font-size:.86rem;line-height:1.68}
+
+/* WORKFLOW */
+.wgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--bdr);border-radius:14px;overflow:hidden}
+.wstep{padding:2rem 1.8rem;border-right:1px solid var(--bdr);position:relative}
+.wstep:last-child{border-right:none}
+.wstep::before{content:attr(data-n);font-size:.65rem;font-weight:700;color:var(--text3);letter-spacing:1px;display:block;margin-bottom:.8rem}
+.wstep::after{content:'/';position:absolute;top:1.5rem;right:1.4rem;font-size:1.6rem;color:var(--bdr2);font-weight:300;line-height:1}
+.wstep h3{font-size:.95rem;font-weight:700;color:var(--vb2);margin-bottom:.5rem}
+.wstep p{font-size:.83rem;color:var(--text2);line-height:1.65}
+
+/* PARTNERS */
+.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem}
+.pcard{background:var(--gl);border:1px solid var(--gb);border-radius:16px;padding:2.2rem;transition:.3s;position:relative;overflow:hidden}
+.pcard::before{content:'';position:absolute;top:0;left:0;right:0;height:2.5px;background:linear-gradient(90deg,var(--vn),var(--vb),var(--vb2))}
+.pcard:hover{border-color:rgba(43,108,176,.36);transform:translateY(-3px)}
+.pcard h3{font-size:1rem;font-weight:700;color:var(--vb2);margin-bottom:.9rem}
+.pcard p{color:var(--text2);font-size:.87rem;line-height:1.72}
+.pbullets{list-style:none;margin-top:1rem;display:flex;flex-direction:column;gap:.3rem}
+.pbullets li{font-size:.82rem;color:var(--text2);display:flex;gap:.5rem}
+.pbullets li::before{content:'·';color:var(--vb2);flex-shrink:0}
+.ptag{display:inline-block;margin-top:1rem;background:rgba(43,108,176,.1);border:1px solid rgba(43,108,176,.22);color:var(--vb2);padding:.22rem .65rem;border-radius:5px;font-size:.72rem;font-weight:600}
+.pbadges{display:flex;align-items:center;gap:1.5rem;margin-bottom:2.5rem;flex-wrap:wrap}
+.pbadge{background:var(--gl);border:1px solid var(--gb);border-radius:10px;padding:.8rem 1.5rem}
+.pbadge strong{font-size:1rem;font-weight:700;color:var(--vb2);display:block;letter-spacing:.3px}
+.pbadge span{font-size:.72rem;color:var(--text3);font-weight:300;letter-spacing:1px}
+
+/* FAQ */
+.flist{max-width:740px;margin:0 auto}
+.fi{border-bottom:1px solid var(--bdr)}
+.fq{width:100%;background:none;border:none;color:var(--text);text-align:left;padding:1.3rem 0;font-size:.93rem;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.ficon{color:var(--vb2);font-size:1.2rem;transition:.3s;flex-shrink:0}
+.fq.open .ficon{transform:rotate(45deg)}
+.fa{display:none;color:var(--text2);font-size:.87rem;line-height:1.78;padding-bottom:1.2rem}
+.fa.open{display:block}
+
+/* CONTACT */
+.ci-grid{display:grid;grid-template-columns:1fr 1.35fr;gap:4rem;align-items:start}
+.ci-info h3{font-size:1.3rem;font-weight:700;margin-bottom:.9rem}
+.ci-info p{color:var(--text2);line-height:1.8;font-size:.92rem;margin-bottom:1.8rem}
+.cd{display:flex;align-items:flex-start;gap:.75rem;margin-bottom:.85rem;color:var(--text2);font-size:.88rem}
+.cform{background:var(--gl);border:1px solid var(--gb);border-radius:18px;padding:2.2rem}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+.fg{display:flex;flex-direction:column;gap:.35rem;margin-bottom:.85rem}
+.fg label{font-size:.72rem;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.7px}
+.fg input,.fg textarea,.fg select{background:rgba(255,255,255,.03);border:1px solid var(--bdr);border-radius:9px;padding:.75rem .95rem;color:var(--text);font-size:.88rem;font-family:inherit;outline:none;transition:.2s}
+.fg input:focus,.fg textarea:focus{border-color:var(--vb)}
+.fg textarea{resize:vertical;min-height:105px}
+.bsub{width:100%;background:var(--vb);color:#fff;padding:.92rem;border-radius:9px;border:none;font-weight:700;font-size:.92rem;cursor:pointer;transition:.2s;font-family:inherit}
+.bsub:hover{background:var(--vb2);transform:translateY(-1px)}
+
+/* SUBPAGE HERO */
+.sub-hero{padding:7rem 6% 4rem;position:relative;overflow:hidden;border-bottom:1px solid var(--bdr)}
+.sub-hero .hbg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(43,108,176,.18),transparent)}
+.sub-hero .hgrid{position:absolute;inset:0;background-image:linear-gradient(rgba(43,108,176,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(43,108,176,.05) 1px,transparent 1px);background-size:52px 52px}
+.sub-hero-content{position:relative;max-width:760px}
+.sub-hero h1{font-size:clamp(2.2rem,4.5vw,3.8rem);letter-spacing:-1.5px;margin-bottom:1rem}
+.sub-hero p{font-size:1.02rem;color:var(--text2);line-height:1.82;max-width:580px}
+.breadcrumb{display:flex;align-items:center;gap:.5rem;font-size:.75rem;color:var(--text3);margin-bottom:1.2rem}
+.breadcrumb a{color:var(--vb2);text-decoration:none;cursor:pointer}
+.breadcrumb a:hover{text-decoration:underline}
+.breadcrumb::before{content:'';width:14px;height:2px;background:var(--vb2)}
+
+/* DETAIL GRID */
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.detail-grid p{color:var(--text2);font-size:.93rem;line-height:1.82;margin-bottom:1rem}
+.detail-grid strong{color:var(--text);font-weight:600}
+.feature-list{list-style:none;display:flex;flex-direction:column;gap:.6rem;margin-top:.5rem}
+.feature-list li{display:flex;align-items:flex-start;gap:.7rem;font-size:.88rem;color:var(--text2);line-height:1.6}
+.feature-list li::before{content:'✓';color:var(--vb2);flex-shrink:0;font-weight:700;margin-top:1px}
+.highlight-box{background:var(--gl);border:1px solid var(--gb);border-radius:14px;padding:2rem;position:relative;overflow:hidden}
+.highlight-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2.5px;background:linear-gradient(90deg,var(--vn),var(--vb2))}
+.highlight-box h3{font-size:1rem;font-weight:700;margin-bottom:.8rem;color:var(--vb2)}
+.highlight-box p{color:var(--text2);font-size:.87rem;line-height:1.72;margin-bottom:0}
+
+/* LEGAL */
+.legal-content{max-width:760px;padding-top:2rem}
+.legal-content h2{font-size:1.4rem;margin-bottom:1rem;margin-top:2rem}
+.legal-content h2:first-child{margin-top:0}
+.legal-content p,.legal-content li{color:var(--text2);font-size:.9rem;line-height:1.82;margin-bottom:.6rem}
+.legal-content ul{padding-left:1.2rem;margin-bottom:1rem}
+.legal-content a{color:var(--vb2);text-decoration:none}
+
+/* FOOTER */
+footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:2.2rem 6%}
+.footer-inner{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:2rem}
+.footer-copy{text-align:center;font-size:.78rem;color:var(--text3)}
+.footer-links{display:flex;gap:1.5rem;justify-content:flex-end;flex-wrap:wrap}
+.footer-links a{color:var(--text3);text-decoration:none;font-size:.8rem;cursor:pointer;transition:.2s}
+.footer-links a:hover{color:var(--vb2)}
+
+/* LANG */
+[data-lang]{display:none}[data-lang].on{display:block}
+span[data-lang]{display:none}span[data-lang].on{display:inline}
+
+/* PHOTO DROP */
+#pdrop{position:fixed;bottom:1.4rem;right:1.4rem;background:var(--bg3);border:1px dashed rgba(43,108,176,.45);border-radius:12px;padding:.9rem 1.2rem;z-index:999;max-width:230px;font-size:.78rem;color:var(--text2);cursor:pointer}
+#pdrop strong{display:block;color:var(--vb2);font-size:.82rem;margin-bottom:.2rem}
+#pdrop input{position:absolute;inset:0;opacity:0;cursor:pointer}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .cgrid{grid-template-columns:repeat(2,1fr)}
+  .wgrid{grid-template-columns:repeat(2,1fr)}
+  .wstep:nth-child(2){border-right:none}
+  .wstep:nth-child(1),.wstep:nth-child(2){border-bottom:1px solid var(--bdr)}
+  .detail-grid{grid-template-columns:1fr}
+}
+@media(max-width:820px){
+  .navlinks{display:none}
+  .hamburger{display:flex}
+  .ncta{display:none}
+  section{padding:4rem 5%}
+  .sub-hero{padding:5.5rem 5% 3rem}
+  .ci-grid{grid-template-columns:1fr}
+  .frow{grid-template-columns:1fr}
+  .htiles{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr;text-align:center}
+  .footer-links{justify-content:center}
+  .pgrid{grid-template-columns:1fr}
+}
+@media(max-width:540px){
+  .cgrid{grid-template-columns:1fr}
+  .wgrid{grid-template-columns:1fr}
+  .wstep{border-right:none!important;border-bottom:1px solid var(--bdr)}
+  .hbtns{flex-direction:column;align-items:center}
+  .bp,.bs{width:100%;text-align:center}
+  .htiles{grid-template-columns:1fr}
+  section{padding:3.5rem 4%}
+  .cform{padding:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo" onclick="nav('home')">
+    <svg width="175" height="40" viewBox="0 0 370 82" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="55" font-family="'Gill Sans','Calibri Light','Optima',sans-serif" font-size="66" font-weight="300" fill="#2b6cb0" letter-spacing="1">Vetrexa</text>
+      <text x="3" y="75" font-family="'Gill Sans','Calibri Light','Optima',sans-serif" font-size="16" font-weight="300" fill="#ffffff" letter-spacing="2.5">Independent Consulting</text>
+      <rect x="300" y="8" width="58" height="4.5" rx="2" fill="#2b6cb0"/>
+      <rect x="312" y="24" width="46" height="4.5" rx="2" fill="#1a365d"/>
+      <rect x="300" y="40" width="58" height="4.5" rx="2" fill="#1a365d"/>
+    </svg>
+  </div>
+  <ul class="navlinks">
+    <li><a onclick="nav('home')" id="nl-home">Vetrexa</a></li>
+    <li><a onclick="nav('competence')" id="nl-competence"><span data-lang="de" class="on">Kompetenz</span><span data-lang="en">Competence</span></a></li>
+    <li><a onclick="nav('partners')" id="nl-partners"><span data-lang="de" class="on">Partner</span><span data-lang="en">Partners</span></a></li>
+    <li><a onclick="nav('contact')" id="nl-contact">Contact</a></li>
+    <li><a onclick="nav('imprint')" id="nl-imprint" style="display:none">Imprint</a></li>
+  </ul>
+  <div class="navr">
+    <div class="lang">
+      <button class="lb on" onclick="setLang('de')">DE</button>
+      <button class="lb" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="ncta" onclick="nav('contact')">Contact</button>
+    <button class="hamburger" id="hbtn" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu">
+  <a onclick="nav('home');closeMenu()">Vetrexa</a>
+  <a onclick="nav('competence');closeMenu()"><span data-lang="de" class="on">Kompetenz</span><span data-lang="en">Competence</span></a>
+  <a onclick="nav('partners');closeMenu()"><span data-lang="de" class="on">Partner</span><span data-lang="en">Partners</span></a>
+  <a onclick="nav('contact');closeMenu()">Contact</a>
+  <a onclick="nav('imprint');closeMenu()">Imprint</a>
+  <a onclick="nav('privacy');closeMenu()">Privacy</a>
+</div>
+
+<!-- ═══════════════ PAGE: HOME ═══════════════ -->
+<main class="page active" id="page-home">
+<article>
+  <section class="hero" aria-label="Hero">
+    <div class="hbg"></div><div class="hgrid"></div>
+    <div class="hc">
+      <div class="hbadge"><span data-lang="de" class="on">Unabhängige IT-Beratung · Monheim am Rhein</span><span data-lang="en">Independent IT Consulting · Monheim am Rhein</span></div>
+      <h1><span data-lang="de" class="on">Consulting mit Leidenschaft.<br/><span class="hl">Liefern mit Präzision.</span></span><span data-lang="en">Consulting with Passion.<br/><span class="hl">Delivering with Precision.</span></span></h1>
+      <p class="hsub"><span data-lang="de" class="on">Vetrexa wurde von einem Team von Enthusiasten gegründet, die glauben, dass großartige Beratung mit einer anderen Perspektive beginnt. Wir verbinden tiefe technische Expertise mit strategischer Vision – immer mit Ihren Zielen im Mittelpunkt.</span><span data-lang="en">Vetrexa was founded by a small team of enthusiasts who believe that great consulting starts with a different perspective. We combine deep technical expertise with strategic vision — always with your goals at the center.</span></p>
+      <div class="hbtns">
+        <button class="bp" onclick="nav('competence')"><span data-lang="de" class="on">Unsere Kompetenzen →</span><span data-lang="en">Our Competences →</span></button>
+        <button class="bs" onclick="nav('contact')"><span data-lang="de" class="on">Kontakt aufnehmen</span><span data-lang="en">Get in touch</span></button>
+      </div>
+      <div class="htiles">
+        <div class="htile"><h4>Start with Vetrexa</h4><p><span data-lang="de" class="on">Strategische Arbeit erfordert ein umfassendes Verständnis aller beteiligten Aspekte.</span><span data-lang="en">Strategic work demands a comprehensive understanding of all aspects involved.</span></p></div>
+        <div class="htile"><h4>Plan, Implement, Optimize</h4><p><span data-lang="de" class="on">Sicherheit durch eine strategische Kombination von Maßnahmen und IAM-Neuausrichtung.</span><span data-lang="en">Enhance security through a strategic blend of measures and realignment with IAM.</span></p></div>
+        <div class="htile"><h4>Focus is Key</h4><p><span data-lang="de" class="on">Interne und externe Prioritäten im Gleichgewicht halten – fokussiert auf das Wesentliche.</span><span data-lang="en">Balancing internal and external priorities while staying focused on the essentials.</span></p></div>
+        <div class="htile"><h4>Access Management</h4><p><span data-lang="de" class="on">Agilität durch unsere Beratung – mehr Effizienz, Kollaboration und Anpassungsfähigkeit.</span><span data-lang="en">Unlock agility with our consulting, enhancing efficiency, collaboration, and adaptability.</span></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg2" aria-labelledby="about-h2">
+    <div class="slabel"><span data-lang="de" class="on">Über uns</span><span data-lang="en">About us</span></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start" class="about-inner-grid">
+      <div>
+        <h2 id="about-h2">Your objective is our mission.</h2>
+        <p style="color:var(--text2);line-height:1.82;font-size:.94rem;margin-bottom:1.1rem"><span data-lang="de" class="on">Vetrexa hilft Ihnen, alle wesentlichen Fähigkeiten für Business Transformation, Consulting und Project Delivery zu entwickeln – und begleitet Sie dabei, vom bloßen Geschäftemachen zum echten Business-Transformator zu werden.</span><span data-lang="en">Vetrexa will help you develop all the essential business transformation, consulting and project delivery capabilities you need — and supports you in effectively transitioning from doing business to transforming business.</span></p>
+        <p style="color:var(--text2);line-height:1.82;font-size:.94rem;margin-bottom:1.1rem"><span data-lang="de" class="on">Ob Sie Ihre IT-Infrastruktur mit <strong style="color:var(--text)">Identity & Access Management</strong> absichern, Ihre Kundenkommunikation mit <strong style="color:var(--text)">Quadient Inspire</strong> modernisieren oder eine komplexe digitale Transformation steuern – wir sind der Partner, der Sie von der Strategie bis zur Umsetzung begleitet.</span><span data-lang="en">Whether you need to secure your IT infrastructure with <strong style="color:var(--text)">Identity & Access Management</strong>, modernize your customer communications with <strong style="color:var(--text)">Quadient Inspire</strong>, or navigate a complex digital transformation — we are the partner who stays with you from strategy to execution.</span></p>
+        <p style="color:var(--text2);line-height:1.82;font-size:.94rem"><span data-lang="de" class="on">Wir sind Generalisten und Spezialisten: breit genug, um das gesamte Bild zu verstehen – tief genug, um einen echten Unterschied zu machen.</span><span data-lang="en">We are generalists and specialists: broad enough to understand the full picture, deep enough to make a real difference.</span></p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1rem">
+        <div class="acard"><h3>🎯 <span data-lang="de" class="on">Unabhängig & unparteiisch</span><span data-lang="en">Independent & unbiased</span></h3><p><span data-lang="de" class="on">Als unabhängiges Beratungsunternehmen sind wir einzig Ihren Zielen verpflichtet – ohne Bindung an Hersteller oder Produkte.</span><span data-lang="en">As an independent consulting firm, we are solely committed to your goals — with no vendor or product allegiance.</span></p></div>
+        <div class="acard"><h3>🌍 <span data-lang="de" class="on">International erprobt</span><span data-lang="en">Internationally proven</span></h3><p><span data-lang="de" class="on">Projekterfahrung in EMEA, APAC und den USA – Banking, Versicherung, Industrie, Automotive und Public Sector.</span><span data-lang="en">Project experience across EMEA, APAC and the US – banking, insurance, industry, automotive and public sector.</span></p></div>
+        <div class="acard"><h3>🏆 <span data-lang="de" class="on">Zertifiziert & vernetzt</span><span data-lang="en">Certified & connected</span></h3><p><span data-lang="de" class="on">Quadient Experience Partner, NEXIS Silver Partner, COBIT 5 Approved Trainer – Trusted. Certified. Connected.</span><span data-lang="en">Quadient Experience Partner, NEXIS Silver Partner, COBIT 5 Approved Trainer – Trusted. Certified. Connected.</span></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="wflow-h2">
+    <div class="slabel"><span data-lang="de" class="on">Unser Workflow</span><span data-lang="en">Our Workflow</span></div>
+    <h2 id="wflow-h2"><span data-lang="de" class="on">Wie wir arbeiten</span><span data-lang="en">How we work</span></h2>
+    <p class="ssub"><span data-lang="de" class="on">Von der ersten Analyse bis zum laufenden Betrieb – ein klarer, strukturierter Prozess.</span><span data-lang="en">From initial analysis to ongoing operations – a clear, structured process.</span></p>
+    <div class="wgrid">
+      <div class="wstep" data-n="01"><h3><span data-lang="de" class="on">Analyse</span><span data-lang="en">Analyse</span></h3><p><span data-lang="de" class="on">Wir durchleuchten Ihre bestehende Landschaft, identifizieren Risiken und Potenziale.</span><span data-lang="en">We analyse your existing landscape, identify risks and potentials.</span></p></div>
+      <div class="wstep" data-n="02"><h3><span data-lang="de" class="on">Strategie</span><span data-lang="en">Strategy</span></h3><p><span data-lang="de" class="on">Wir entwickeln eine maßgeschneiderte Zielarchitektur und Roadmap.</span><span data-lang="en">We develop a tailored target architecture and roadmap together with you.</span></p></div>
+      <div class="wstep" data-n="03"><h3><span data-lang="de" class="on">Implementierung</span><span data-lang="en">Implementation</span></h3><p><span data-lang="de" class="on">Strukturiertes Rollout mit klaren Milestones und agilen Sprints bis Go-Live.</span><span data-lang="en">Structured rollout with clear milestones and agile sprints through to go-live.</span></p></div>
+      <div class="wstep" data-n="04"><h3><span data-lang="de" class="on">Optimierung</span><span data-lang="en">Optimise</span></h3><p><span data-lang="de" class="on">Nach Go-Live begleiten wir die Stabilisierung und optimieren kontinuierlich.</span><span data-lang="en">After go-live we support stabilisation and continuously optimise for sustainable results.</span></p></div>
+    </div>
+  </section>
+</article>
+</main>
+
+<!-- ═══════════════ PAGE: COMPETENCE ═══════════════ -->
+<main class="page" id="page-competence">
+<article>
+  <div class="sub-hero">
+    <div class="hbg"></div><div class="hgrid"></div>
+    <div class="sub-hero-content">
+      <div class="breadcrumb"><a onclick="nav('home')">Vetrexa</a> › <span data-lang="de" class="on">Kompetenz</span><span data-lang="en">Competence</span></div>
+      <h1><span data-lang="de" class="on">Kompetenz</span><span data-lang="en">Competence</span></h1>
+      <p><span data-lang="de" class="on">Your objective is our mission. Vetrexa bietet End-to-End-Expertise in fünf Kernbereichen – von der Strategie über die Implementierung bis zum laufenden Betrieb.</span><span data-lang="en">Your objective is our mission. Vetrexa offers end-to-end expertise across five core areas – from strategy through implementation to ongoing operations.</span></p>
+    </div>
+  </div>
+  <section aria-labelledby="comp-h2">
+    <h2 id="comp-h2"><span data-lang="de" class="on">End-to-End-Expertise in sechs Kernbereichen.</span><span data-lang="en">End-to-End Expertise Across Six Core Areas.</span></h2>
+    <p class="ssub"><span data-lang="de" class="on">Vetrexa bietet modulare Beratungsleistungen – von der Strategie über die Implementierung bis hin zum laufenden Betrieb. Unsere Expertise basiert auf nachgewiesener Projekterfahrung in regulierten Branchen.</span><span data-lang="en">Vetrexa offers modular consulting services – from strategy through implementation to ongoing operations. Our expertise is based on proven project experience in regulated industries.</span></p>
+    <div class="cgrid">
+
+      <!-- 01 IAM -->
+      <div class="cc">
+        <div class="cnum">01</div>
+        <h3>IAM &amp; Security</h3>
+        <p><span data-lang="de" class="on">Ganzheitliche Beratung rund um Identity & Access Management – von der Strategie über die Tool-Evaluierung bis zur produktiven Implementierung und laufenden Optimierung in regulierten Umgebungen.</span><span data-lang="en">End-to-end consulting for Identity & Access Management – from strategy and tool evaluation through to productive implementation and ongoing optimisation in regulated environments.</span></p>
+        <ul class="cbullets">
+          <li><span data-lang="de" class="on">IAM-Zielbildentwicklung & Architekturdesign</span><span data-lang="en">IAM target architecture design</span></li>
+          <li><span data-lang="de" class="on">Tool-Evaluierung & Proof-of-Concept (IGA/IAM)</span><span data-lang="en">Tool evaluation & proof of concept (IGA/IAM)</span></li>
+          <li><span data-lang="de" class="on">SailPoint IIQ: Konfiguration, Workflows, UAT</span><span data-lang="en">SailPoint IIQ: configuration, workflows, UAT</span></li>
+          <li><span data-lang="de" class="on">PAM-Integration & Privileged Access Governance</span><span data-lang="en">PAM integration & privileged access governance</span></li>
+          <li><span data-lang="de" class="on">RBAC, SoD-Modellierung & Rollenkonsolidierung</span><span data-lang="en">RBAC, SoD modelling & role consolidation</span></li>
+          <li><span data-lang="de" class="on">Rezertifizierung, Audit-Readiness & MaRisk-Compliance</span><span data-lang="en">Recertification, audit readiness & MaRisk compliance</span></li>
+          <li><span data-lang="de" class="on">Connector-Entwicklung (SAP, AD, ServiceNow, MIM)</span><span data-lang="en">Connector development (SAP, AD, ServiceNow, MIM)</span></li>
+        </ul>
+        <div style="margin-top:1rem;padding-top:.9rem;border-top:1px solid var(--bdr);font-size:.76rem;color:var(--text3)">
+          <span data-lang="de" class="on">Projekterfahrung: Banking · Versicherung · Industrie · Automotive</span>
+          <span data-lang="en">Project experience: Banking · Insurance · Industry · Automotive</span>
+        </div>
+      </div>
+
+      <!-- 02 Berechtigungsmanagement -->
+      <div class="cc">
+        <div class="cnum">02</div>
+        <h3><span data-lang="de" class="on">Berechtigungsmanagement</span><span data-lang="en">Authorization Management</span></h3>
+        <p><span data-lang="de" class="on">Strukturiertes Berechtigungsmanagement ist die Grundlage jeder sicheren IT-Umgebung. Wir analysieren, bereinigen und governance-konform optimieren Ihre Rollen- und Zugriffsstrukturen – systemübergreifend, auditfähig und nachhaltig.</span><span data-lang="en">Structured authorization management is the foundation of every secure IT environment. We analyse, clean up and governance-compliantly optimise your role and access structures – cross-system, audit-ready and sustainable.</span></p>
+        <ul class="cbullets">
+          <li><span data-lang="de" class="on">Analyse & Bereinigung bestehender Berechtigungsstrukturen</span><span data-lang="en">Analysis & clean-up of existing authorisation structures</span></li>
+          <li><span data-lang="de" class="on">Fit/Gap-Analyse & Bewertungsmatrizen für IGA-Lösungen</span><span data-lang="en">Fit/gap analysis & scoring matrices for IGA solutions</span></li>
+          <li><span data-lang="de" class="on">Entitlement-Owner-Prozesse & Eskalationslogik</span><span data-lang="en">Entitlement owner processes & escalation logic</span></li>
+          <li><span data-lang="de" class="on">Systemübergreifende Risikobewertung (Cross-System)</span><span data-lang="en">Cross-system risk assessment</span></li>
+          <li><span data-lang="de" class="on">Integration von Fachbereichen in Governance-Prozesse</span><span data-lang="en">Integration of business departments into governance processes</span></li>
+          <li><span data-lang="de" class="on">KPI-Dashboards für Audit & Compliance-Reporting</span><span data-lang="en">KPI dashboards for audit & compliance reporting</span></li>
+        </ul>
+        <div style="margin-top:1rem;padding-top:.9rem;border-top:1px solid var(--bdr);font-size:.76rem;color:var(--text3)">
+          <span data-lang="de" class="on">Projekterfahrung: Banking · Versicherung · IT-Services</span>
+          <span data-lang="en">Project experience: Banking · Insurance · IT Services</span>
+        </div>
+      </div>
+
+      <!-- 03 Output Management -->
+      <div class="cc">
+        <div class="cnum">03</div>
+        <h3>Output Management</h3>
+        <p><span data-lang="de" class="on">Ablösung von Legacy-Systemen (Papyrus, DOPiX) und Implementierung moderner Output-Management-Lösungen mit Quadient Inspire – barrierefrei, skalierbar und zukunftssicher. Alle Berater sind Inspire-zertifiziert.</span><span data-lang="en">Replacement of legacy systems (Papyrus, DOPiX) and implementation of modern output management solutions with Quadient Inspire – accessible, scalable and future-proof. All consultants are Inspire-certified.</span></p>
+        <ul class="cbullets">
+          <li><span data-lang="de" class="on">Template-Analyse & Kategorisierung nach Layout & Accessibility</span><span data-lang="en">Template analysis & categorisation by layout & accessibility</span></li>
+          <li><span data-lang="de" class="on">Migration ins Inspire-Format inkl. QS & Abnahmetests</span><span data-lang="en">Migration to Inspire format incl. QA & acceptance tests</span></li>
+          <li><span data-lang="de" class="on">Inspire Designer, Scaler, Interactive & Flex</span><span data-lang="en">Inspire Designer, Scaler, Interactive & Flex</span></li>
+          <li><span data-lang="de" class="on">CI/CD-Integration & PowerShell-Automatisierung</span><span data-lang="en">CI/CD integration & PowerShell automation</span></li>
+          <li><span data-lang="de" class="on">Rollout-Management & Hypercare in Bankumgebungen</span><span data-lang="en">Rollout management & hypercare in banking environments</span></li>
+          <li><span data-lang="de" class="on">Barrierefreiheit (Accessibility) gemäß WCAG</span><span data-lang="en">Accessibility compliance (WCAG)</span></li>
+        </ul>
+        <div style="margin-top:1rem;padding-top:.9rem;border-top:1px solid var(--bdr);font-size:.76rem;color:var(--text3)">
+          <span data-lang="de" class="on">Projekterfahrung: Banking · Versicherung · Finanzdienstleistungen</span>
+          <span data-lang="en">Project experience: Banking · Insurance · Financial Services</span>
+        </div>
+      </div>
+
+      <!-- 04 Strategy & Consulting -->
+      <div class="cc">
+        <div class="cnum">04</div>
+        <h3><span data-lang="de" class="on">Strategy &amp; Consulting</span><span data-lang="en">Strategy &amp; Consulting</span></h3>
+        <p><span data-lang="de" class="on">Maßgeschneiderte IT-Strategien und globale Operating Models für komplexe, internationale Unternehmensstrukturen. Wir verbinden strategische Tiefe mit operativer Umsetzungskraft.</span><span data-lang="en">Tailored IT strategies and global operating models for complex international corporate structures. We combine strategic depth with operational execution power.</span></p>
+        <ul class="cbullets">
+          <li><span data-lang="de" class="on">Business Transformation & Digitalisierungsstrategien</span><span data-lang="en">Business transformation & digitalisation strategies</span></li>
+          <li><span data-lang="de" class="on">Globale Operating Models (EMEA, APAC, US)</span><span data-lang="en">Global operating models (EMEA, APAC, US)</span></li>
+          <li><span data-lang="de" class="on">Supply Chain Analyse & Optimierung</span><span data-lang="en">Supply chain analysis & optimisation</span></li>
+          <li><span data-lang="de" class="on">Cloud-Strategie & Zielarchitektur (Azure, AWS)</span><span data-lang="en">Cloud strategy & target architecture (Azure, AWS)</span></li>
+          <li><span data-lang="de" class="on">Business Cases, ROI- & Break-Even-Analysen</span><span data-lang="en">Business cases, ROI & break-even analyses</span></li>
+          <li><span data-lang="de" class="on">Governance Frameworks (COBIT, NIST, MaRisk)</span><span data-lang="en">Governance frameworks (COBIT, NIST, MaRisk)</span></li>
+        </ul>
+        <div style="margin-top:1rem;padding-top:.9rem;border-top:1px solid var(--bdr);font-size:.76rem;color:var(--text3)">
+          <span data-lang="de" class="on">Projekterfahrung: Chemie/Industrie · Banking · eCommerce · Public Sector</span>
+          <span data-lang="en">Project experience: Chemical/Industry · Banking · eCommerce · Public Sector</span>
+        </div>
+      </div>
+
+      <!-- 05 Projektmanagement & PMO -->
+      <div class="cc">
+        <div class="cnum">05</div>
+        <h3>PMO &amp; <span data-lang="de" class="on">Projektmanagement</span><span data-lang="en">Project Management</span></h3>
+        <p><span data-lang="de" class="on">Strukturiertes Projektmanagement in agilen und klassischen Umfeldern – von der Terminkoordination über Budgetcontrolling bis hin zur Steuerung komplexer Multi-Vendor-Programme.</span><span data-lang="en">Structured project management in agile and classic environments – from scheduling and budget control to managing complex multi-vendor programmes.</span></p>
+        <ul class="cbullets">
+          <li><span data-lang="de" class="on">PMO-Aufbau & Projektstrukturierung</span><span data-lang="en">PMO setup & project structuring</span></li>
+          <li><span data-lang="de" class="on">Agile Events: Dailys, Sprint Reviews, Retros, Offsites</span><span data-lang="en">Agile events: dailies, sprint reviews, retros, offsites</span></li>
+          <li><span data-lang="de" class="on">Budgetcontrolling & Ressourcenplanung</span><span data-lang="en">Budget controlling & resource planning</span></li>
+          <li><span data-lang="de" class="on">Stakeholder- & Providermanagement</span><span data-lang="en">Stakeholder & provider management</span></li>
+          <li><span data-lang="de" class="on">Confluence, Jira, SharePoint – Dokumentation & Reporting</span><span data-lang="en">Confluence, Jira, SharePoint – documentation & reporting</span></li>
+          <li><span data-lang="de" class="on">Programm-Management großer Infrastrukturmigrationsprojekte</span><span data-lang="en">Programme management for large infrastructure migration projects</span></li>
+        </ul>
+        <div style="margin-top:1rem;padding-top:.9rem;border-top:1px solid var(--bdr);font-size:.76rem;color:var(--text3)">
+          <span data-lang="de" class="on">Projekterfahrung: Banking · Versicherung · Automotive · Industrie</span>
+          <span data-lang="en">Project experience: Banking · Insurance · Automotive · Industry</span>
+        </div>
+      </div>
+
+      <!-- 06 Managed Services & Performance -->
+      <div class="cc">
+        <div class="cnum">06</div>
+        <h3>Managed Services &amp; Performance</h3>
+        <p><span data-lang="de" class="on">Laufender Betrieb, Monitoring und kontinuierliche Optimierung – kombiniert mit der transformativen Wirkung agiler Methoden für Effizienzsteigerung, Zusammenarbeit und Anpassungsfähigkeit Ihres Unternehmens.</span><span data-lang="en">Ongoing operations, monitoring and continuous optimisation – combined with the transformative effect of agile methods for increased efficiency, collaboration and adaptability of your organisation.</span></p>
+        <ul class="cbullets">
+          <li><span data-lang="de" class="on">IT-Betrieb, Monitoring & Störungsbehebung</span><span data-lang="en">IT operations, monitoring & incident resolution</span></li>
+          <li><span data-lang="de" class="on">Security Management & Patch-Management</span><span data-lang="en">Security management & patch management</span></li>
+          <li><span data-lang="de" class="on">Service Governance, SLAs & KPI-Reporting</span><span data-lang="en">Service governance, SLAs & KPI reporting</span></li>
+          <li><span data-lang="de" class="on">Prozessoptimierung & Automatisierung (Power Automate, RPA)</span><span data-lang="en">Process optimisation & automation (Power Automate, RPA)</span></li>
+          <li><span data-lang="de" class="on">Agile Transformation & Customer Collaboration</span><span data-lang="en">Agile transformation & customer collaboration</span></li>
+          <li><span data-lang="de" class="on">KI-gestützte Werkzeuge im Consulting-Einsatz</span><span data-lang="en">AI-assisted tools in consulting operations</span></li>
+        </ul>
+        <div style="margin-top:1rem;padding-top:.9rem;border-top:1px solid var(--bdr);font-size:.76rem;color:var(--text3)">
+          <span data-lang="de" class="on">Projekterfahrung: Aerospace · Banking · Industrie · IT-Services</span>
+          <span data-lang="en">Project experience: Aerospace · Banking · Industry · IT Services</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- REFERENZEN -->
+  <section class="bg2" aria-labelledby="ref-h2">
+    <div class="slabel"><span data-lang="de" class="on">Referenzprojekte</span><span data-lang="en">Reference Projects</span></div>
+    <h2 id="ref-h2"><span data-lang="de" class="on">Projekterfahrung aus der Praxis.</span><span data-lang="en">Real-World Project Experience.</span></h2>
+    <p class="ssub"><span data-lang="de" class="on">Ausgewählte Projektreferenzen nach Branche – ohne Nennung von Kundennamen.</span><span data-lang="en">Selected project references by industry – without naming clients.</span></p>
+    <div class="cgrid">
+
+      <div class="cc">
+        <div class="cnum" style="color:var(--vb2)">Banking</div>
+        <h3><span data-lang="de" class="on">IAM Governance & Audit-Readiness</span><span data-lang="en">IAM Governance & Audit Readiness</span></h3>
+        <p><span data-lang="de" class="on">Konzeption und Implementierung einer COBIT-basierten IAM-Governance-Architektur. Aufbau auditfähiger Rezertifizierungsprozesse, Definition von SLA-Komponenten und Eskalationspfaden. Entwicklung eines Power-BI-Dashboards für Asset-Datenqualität und KPI-Tracking.</span><span data-lang="en">Design and implementation of a COBIT-based IAM governance architecture. Development of audit-ready recertification processes, SLA components and escalation paths. Power BI dashboard for asset data quality and KPI tracking.</span></p>
+        <ul class="cbullets">
+          <li><span data-lang="de" class="on">Toolset: ServiceNow, Jira/XRay, Confluence, Power BI</span><span data-lang="en">Toolset: ServiceNow, Jira/XRay, Confluence, Power BI</span></li>
+          <li><span data-lang="de" class="on">Methoden: COBIT, MaRisk, Scrum</span><span data-lang="en">Methods: COBIT, MaRisk, Scrum</span></li>
+        </ul>
+      </div>
+
+      <div class="cc">
+        <div class="cnum" style="color:var(--vb2)">Banking</div>
+        <h3><span data-lang="de" class="on">Output Management – Legacy-Ablösung</span><span data-lang="en">Output Management – Legacy Replacement</span></h3>
+        <p><span data-lang="de" class="on">Ablösung von End-of-Lifecycle-Systemen durch Quadient Inspire. End-to-End agiles Projektmanagement, Steuerung eines cross-funktionalen Teams aus Business, IT und externen Vendoren. Go-Live-Planung, Release Management und Hypercare-Phase.</span><span data-lang="en">Replacement of end-of-lifecycle systems with Quadient Inspire. End-to-end agile project management, steering a cross-functional team of business, IT and external vendors. Go-live planning, release management and hypercare phase.</span></p>
+        <ul class="cbullets">
+          <li><span data-lang="de" class="on">Toolset: Quadient Inspire, Jira, Confluence, ServiceNow</span><span data-lang="en">Toolset: Quadient Inspire, Jira, Confluence, ServiceNow</span></li>
+          <li><span data-lang="de" class="on">Methoden: Scrum, Kanban, Release Management</span><span data-lang="en">Methods: Scrum, Kanban, Release Management</span></li>
+        </ul>
+      </div>
+
+      <div class="cc">
+        <div class="cnum" style="color:var(--vb2)">Banking</div>
+        <h3><span data-lang="de" class="on">Multi-Cloud-Migration & IAM-Beratung</span><span data-lang="en">Multi-Cloud Migration & IAM Advisory</span></h3>
+        <p><span data-lang="de" class="on">Standardisierung und Transformation einer heterogenen Plattformlandschaft auf Azure und AWS. Co-Design einer service-basierten Zielarchitektur, Koordination internationaler Architecture- und DevOps-Teams, Governance- und Reporting-Frameworks.</span><span data-lang="en">Standardisation and transformation of a heterogeneous platform landscape onto Azure and AWS. Co-design of a service-based target architecture, coordination of international architecture and DevOps teams, governance and reporting frameworks.</span></p>
+        <ul class="cbullets">
+          <li><span data-lang="de" class="on">Toolset: Azure, AWS, Jira/XRay, Confluence, DevOps</span><span data-lang="en">Toolset: Azure, AWS, Jira/XRay, Confluence, DevOps</span></li>
+          <li><span data-lang="de" class="on">Methoden: Scrum of Scrums, SAFe</span><span data-lang="en">Methods: Scrum of Scrums, SAFe</span></li>
+        </ul>
+      </div>
+
+      <div class="cc">
+        <div class="cnum" style="color:var(--vb2)"><span data-lang="de" class="on">Versicherung</span><span data-lang="en">Insurance</span></div>
+        <h3><span data-lang="de" class="on">IAM Rezertifizierung & Audit-Prozesse</span><span data-lang="en">IAM Recertification & Audit Processes</span></h3>
+        <p><span data-lang="de" class="on">Design und Spezifikation eines revisionssicheren Entitlement-Rezertifizierungsprozesses. Definition von Use Cases (Owner Review, Delegation, Eskalation, Non-Response Handling). SailPoint-Konfiguration und funktionale Abnahmetests.</span><span data-lang="en">Design and specification of an audit-proof entitlement recertification process. Definition of use cases (owner review, delegation, escalation, non-response handling). SailPoint configuration and functional acceptance testing.</span></p>
+        <ul class="cbullets">
+          <li><span data-lang="de" class="on">Toolset: SailPoint IIQ, Jira/XRay, Confluence</span><span data-lang="en">Toolset: SailPoint IIQ, Jira/XRay, Confluence</span></li>
+          <li><span data-lang="de" class="on">Methoden: Requirements Engineering, UAT, Audit-Review</span><span data-lang="en">Methods: Requirements engineering, UAT, audit review</span></li>
+        </ul>
+      </div>
+
+      <div class="cc">
+        <div class="cnum" style="color:var(--vb2)"><span data-lang="de" class="on">Industrie / Chemie</span><span data-lang="en">Industry / Chemicals</span></div>
+        <h3><span data-lang="de" class="on">Globales Operating Model & Service Design</span><span data-lang="en">Global Operating Model & Service Design</span></h3>
+        <p><span data-lang="de" class="on">Aufbau eines globalen Operating Models zur Harmonisierung und Digitalisierung von Service- und Angebotsprozessen über EMEA, APAC und die USA. Entwicklung von Governance Framework, Rollenmodell und KPI-Struktur. Internationale Workshops und C-Level-Entscheidungsvorlagen.</span><span data-lang="en">Development of a global operating model to harmonise and digitalise service and quoting processes across EMEA, APAC and the US. Governance framework, role model and KPI structure. International workshops and C-level decision papers.</span></p>
+        <ul class="cbullets">
+          <li><span data-lang="de" class="on">Toolset: SAP, Power BI, BPMN, Jira, Confluence</span><span data-lang="en">Toolset: SAP, Power BI, BPMN, Jira, Confluence</span></li>
+          <li><span data-lang="de" class="on">Methoden: Design Thinking, Lean, SAFe</span><span data-lang="en">Methods: Design Thinking, Lean, SAFe</span></li>
+        </ul>
+      </div>
+
+      <div class="cc">
+        <div class="cnum" style="color:var(--vb2)">Automotive</div>
+        <h3><span data-lang="de" class="on">Rechenzentrumsmigration – Programmmanagement</span><span data-lang="en">Data Centre Migration – Programme Management</span></h3>
+        <p><span data-lang="de" class="on">Gesamtprogrammmanagement für die Migration kritischer IT-Infrastruktur in ein neues Hochverfügbarkeitsrechenzentrum. Koordination mehrerer externer Provider, Integrationstests und Go-Live-Phasen, Dependency- und Risikomanagement über komplexe Systemlandschaften.</span><span data-lang="en">Overall programme management for the migration of critical IT infrastructure into a new high-availability data centre. Coordination of multiple external providers, integration testing and go-live phases, dependency and risk management across complex system landscapes.</span></p>
+        <ul class="cbullets">
+          <li><span data-lang="de" class="on">Toolset: Jira/XRay, MS Project, Governance Frameworks</span><span data-lang="en">Toolset: Jira/XRay, MS Project, Governance Frameworks</span></li>
+          <li><span data-lang="de" class="on">Methoden: Scrum, SAFe, Multi-Vendor-Management</span><span data-lang="en">Methods: Scrum, SAFe, Multi-Vendor Management</span></li>
+        </ul>
+      </div>
+
+      <div class="cc">
+        <div class="cnum" style="color:var(--vb2)"><span data-lang="de" class="on">Aerospace & Defence</span><span data-lang="en">Aerospace & Defence</span></div>
+        <h3><span data-lang="de" class="on">IT & Compliance Taskforce</span><span data-lang="en">IT & Compliance Taskforce</span></h3>
+        <p><span data-lang="de" class="on">Compliance-Sicherstellung nach organisatorischem Carve-out. Leitung von sechs Squads im SAFe-Taskforce-Setup. Sprint-getriebene Umsetzung von Security- und Incident-Maßnahmen, SIEM/SOC-Integration, KI-gestützte Monitoring-Ansätze, Windows-10-Client-Rollout.</span><span data-lang="en">Compliance assurance following an organisational carve-out. Led six squads in a SAFe taskforce setup. Sprint-driven delivery of security and incident measures, SIEM/SOC integration, AI-assisted monitoring, Windows 10 client rollout.</span></p>
+        <ul class="cbullets">
+          <li><span data-lang="de" class="on">Toolset: Kibana, Power BI, Jira/XRay, MECM</span><span data-lang="en">Toolset: Kibana, Power BI, Jira/XRay, MECM</span></li>
+          <li><span data-lang="de" class="on">Methoden: SAFe, Scrum of Scrums</span><span data-lang="en">Methods: SAFe, Scrum of Scrums</span></li>
+        </ul>
+      </div>
+
+      <div class="cc">
+        <div class="cnum" style="color:var(--vb2)"><span data-lang="de" class="on">Industrie (IAM/IGA)</span><span data-lang="en">Industry (IAM/IGA)</span></div>
+        <h3><span data-lang="de" class="on">IGA-Tool-Evaluierung & POC-Definition</span><span data-lang="en">IGA Tool Evaluation & POC Definition</span></h3>
+        <p><span data-lang="de" class="on">Strukturierte Evaluierung von IT Asset und IGA-Management-Tools als Nachfolgelösung. Anforderungsworkshops mit Business, IT und Compliance. Fit/Gap-Analyse, gewichtete Scoring-Matrix, POC-Design und Managementpräsentation (ServiceNow vs. Best-of-Breed-Lösungen).</span><span data-lang="en">Structured evaluation of IT asset and IGA management tools as a successor solution. Requirements workshops with business, IT and compliance. Fit/gap analysis, weighted scoring matrix, POC design and management presentation (ServiceNow vs. best-of-breed solutions).</span></p>
+        <ul class="cbullets">
+          <li><span data-lang="de" class="on">Toolset: ServiceNow, SailPoint, Confluence, Power BI</span><span data-lang="en">Toolset: ServiceNow, SailPoint, Confluence, Power BI</span></li>
+          <li><span data-lang="de" class="on">Methoden: Fit/Gap, Scoring, POC-Design</span><span data-lang="en">Methods: Fit/Gap, Scoring, POC Design</span></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+</article>
+</main>
+
+<!-- ═══════════════ PAGE: PARTNERS ═══════════════ -->
+<main class="page" id="page-partners">
+<article>
+  <div class="sub-hero">
+    <div class="hbg"></div><div class="hgrid"></div>
+    <div class="sub-hero-content">
+      <div class="breadcrumb"><a onclick="nav('home')">Vetrexa</a> › <span data-lang="de" class="on">Partner</span><span data-lang="en">Partners</span></div>
+      <h1>Trusted. Certified. Connected.</h1>
+      <p><span data-lang="de" class="on">Unsere Partnerschaften stehen für zertifiziertes Wissen, gemeinsame Standards und das Engagement für erstklassige Lösungen.</span><span data-lang="en">Our partnerships represent certified knowledge, shared standards, and a commitment to delivering best-in-class solutions.</span></p>
+    </div>
+  </div>
+  <section aria-labelledby="partner-h2">
+    <h2 id="partner-h2"><span data-lang="de" class="on">Unsere Partnerschaften</span><span data-lang="en">Our Partnerships</span></h2>
+    <p class="ssub"><span data-lang="de" class="on">Vetrexa ist stolz darauf, mit branchenführenden Technologiepartnern zusammenzuarbeiten.</span><span data-lang="en">Vetrexa is proud to work alongside industry-leading technology partners.</span></p>
+    <div class="pbadges">
+      <div class="pbadge"><strong>NEXIS</strong><span>Silver Partner</span></div>
+      <div class="pbadge"><strong>Quadient</strong><span>Experience Partner · Alle Berater Inspire-zertifiziert</span></div>
+      <div class="pbadge"><strong>Output Management</strong><span>Inspire Expert Certified</span></div>
+    </div>
+    <div class="pgrid">
+      <div class="pcard">
+        <h3>Quadient Experience Partner &amp; Inspire Expert Certified</h3>
+        <p><span data-lang="de" class="on">Vetrexa ist offizieller <strong style="color:var(--text)">Quadient Experience Partner</strong> und hält die <strong style="color:var(--text)">Quadient Inspire Expert Certification</strong> – die höchste individuelle technische Zertifizierung für die Quadient Inspire CCM-Plattform. Alle Berater des Vetrexa-Teams sind Inspire-zertifiziert (Designer, Content Manager, Scaler & Interactive).</span><span data-lang="en">Vetrexa is an official <strong style="color:var(--text)">Quadient Experience Partner</strong> and holds the <strong style="color:var(--text)">Quadient Inspire Expert Certification</strong> — the highest level of individual technical certification for the Quadient Inspire CCM platform. All Vetrexa consultants are Inspire-certified (Designer, Content Manager, Scaler & Interactive).</span></p>
+        <p style="margin-top:.8rem"><span data-lang="de" class="on">Als zertifizierter Partner hilft Vetrexa Kunden bei der Implementierung, Migration und Optimierung von Inspire-Umgebungen – von Inspire Designer und Scaler bis hin zu cloudbasierten Inspire Flex Deployments.</span><span data-lang="en">As a certified partner, Vetrexa helps clients implement, migrate, and optimize Inspire environments — from Inspire Designer and Scaler to cloud-based Inspire Flex deployments.</span></p>
+        <ul class="pbullets">
+          <li><span data-lang="de" class="on">Zertifizierte Expertise in Inspire Designer, Scaler, Interactive & Flex</span><span data-lang="en">Certified expertise in Inspire Designer, Scaler, Interactive & Flex</span></li>
+          <li><span data-lang="de" class="on">Bewährte Methodik für CCM-Migrationen und Plattform-Upgrades</span><span data-lang="en">Proven methodology for CCM migrations and platform upgrades</span></li>
+          <li><span data-lang="de" class="on">Zugang zum Quadient-Partnernetzwerk</span><span data-lang="en">Access to Quadient's partner network</span></li>
+          <li><span data-lang="de" class="on">Direkter Eskalationspfad im Quadient-Ökosystem</span><span data-lang="en">Direct escalation paths within the Quadient ecosystem</span></li>
+        </ul>
+        <span class="ptag">Quadient Inspire CCM</span>
+      </div>
+      <div class="pcard">
+        <h3>NEXIS Silver Partner</h3>
+        <p><span data-lang="de" class="on">Vetrexa ist <strong style="color:var(--text)">NEXIS Silver Partner</strong> – zertifizierter Partner für die NEXIS 4 Identity Analytics & Governance Plattform. Eine führende Lösung für systemübergreifendes Berechtigungsmanagement, Risikobewertung und Zugriffskontrolle.</span><span data-lang="en">Vetrexa holds a <strong style="color:var(--text)">NEXIS Silver Partnership</strong> — certified partner for the NEXIS 4 Identity Analytics & Governance platform. A leading solution for cross-system authorization management, risk assessment and access control.</span></p>
+        <ul class="pbullets" style="margin-top:1.1rem">
+          <li><span data-lang="de" class="on">Systemübergreifende Analyse von Berechtigungsstrukturen</span><span data-lang="en">Cross-system analysis of authorization structures</span></li>
+          <li><span data-lang="de" class="on">Visuelles Rollen- & Rechtemodeling</span><span data-lang="en">Visual role & access rights modeling</span></li>
+          <li><span data-lang="de" class="on">Automatisiertes Compliance-Reporting</span><span data-lang="en">Automated compliance reporting</span></li>
+          <li><span data-lang="de" class="on">Integration von Fachbereichen in Governance-Prozesse</span><span data-lang="en">Integration of business departments into governance processes</span></li>
+        </ul>
+        <span class="ptag">NEXIS 4 · IAG · Governance</span>
+      </div>
+    </div>
+  </section>
+</article>
+</main>
+
+<!-- ═══════════════ PAGE: CONTACT ═══════════════ -->
+<main class="page" id="page-contact">
+<article>
+  <div class="sub-hero">
+    <div class="hbg"></div><div class="hgrid"></div>
+    <div class="sub-hero-content">
+      <div class="breadcrumb"><a onclick="nav('home')">Vetrexa</a> › Contact</div>
+      <h1>Contact</h1>
+      <p><span data-lang="de" class="on">Wir freuen uns auf Ihre Nachricht und melden uns schnellstmöglich bei Ihnen.</span><span data-lang="en">We look forward to your message and will get back to you as soon as possible.</span></p>
+    </div>
+  </div>
+  <section aria-labelledby="contact-h2">
+    <div class="ci-grid">
+      <div class="ci-info">
+        <h2 id="contact-h2"><span data-lang="de" class="on">Sprechen Sie uns an</span><span data-lang="en">Get in touch</span></h2>
+        <p><span data-lang="de" class="on">Bereit für den nächsten Schritt? Nehmen Sie Kontakt auf – wir begleiten Sie von der ersten Idee bis zur Umsetzung.</span><span data-lang="en">Ready for the next step? Get in touch – we accompany you from the first idea through to execution.</span></p>
+        <div class="cd"><span style="color:var(--vb2)">🏢</span><div><strong>Vetrexa GmbH</strong><br/>Lerchenweg 3<br/>D-40789 Monheim am Rhein</div></div>
+        <div class="cd"><span style="color:var(--vb2)">✉️</span><span>schmidt@vetrexa.com</span></div>
+        <div class="cd"><span style="color:var(--vb2)">📞</span><span>+49 170 473 99 80</span></div>
+        <div class="cd"><span style="color:var(--vb2)">🌐</span><a href="https://www.vetrexa.com" style="color:var(--text2);text-decoration:none">www.vetrexa.com</a></div>
+      </div>
+      <div class="cform">
+        <div class="frow">
+          <div class="fg"><label><span data-lang="de" class="on">Vorname</span><span data-lang="en">First name</span></label><input type="text" placeholder="Max"/></div>
+          <div class="fg"><label><span data-lang="de" class="on">Nachname</span><span data-lang="en">Last name</span></label><input type="text" placeholder="Mustermann"/></div>
+        </div>
+        <div class="fg"><label>E-Mail</label><input type="email" placeholder="max@firma.de"/></div>
+        <div class="fg"><label><span data-lang="de" class="on">Unternehmen</span><span data-lang="en">Company</span></label><input type="text" placeholder="Muster GmbH"/></div>
+        <div class="fg"><label><span data-lang="de" class="on">Betreff</span><span data-lang="en">Subject</span></label>
+          <select><option>IAM &amp; Security</option><option>Strategy &amp; Consulting</option><option>Projektmanagement</option><option>Managed Services</option><option>Output Management</option><option>Allgemeine Anfrage</option></select>
+        </div>
+        <div class="fg"><label><span data-lang="de" class="on">Nachricht</span><span data-lang="en">Message</span></label><textarea placeholder="..."></textarea></div>
+        <button class="bsub"><span data-lang="de" class="on">Nachricht senden →</span><span data-lang="en">Send message →</span></button>
+      </div>
+    </div>
+
+    <!-- FAQ inline on contact page -->
+    <div style="margin-top:4rem">
+      <div class="slabel">FAQ</div>
+      <h2 style="margin-bottom:2rem"><span data-lang="de" class="on">Häufige Fragen</span><span data-lang="en">Frequently Asked Questions</span></h2>
+      <div class="flist">
+        <div class="fi"><button class="fq" onclick="tFaq(this)"><span data-lang="de" class="on">Was macht Vetrexa als „Independent Consulting" besonders?</span><span data-lang="en">What makes Vetrexa special as "Independent Consulting"?</span><span class="ficon">+</span></button><div class="fa"><span data-lang="de" class="on">Als unabhängiges Beratungsunternehmen sind wir keinem Hersteller und keinem Produkt verpflichtet. Wir empfehlen ausschließlich das, was für Ihre Situation am besten geeignet ist.</span><span data-lang="en">As an independent consulting firm, we have no obligation to any vendor or product. We recommend only what is best suited for your situation.</span></div></div>
+        <div class="fi"><button class="fq" onclick="tFaq(this)"><span data-lang="de" class="on">Für welche Branchen arbeitet Vetrexa?</span><span data-lang="en">Which industries does Vetrexa serve?</span><span class="ficon">+</span></button><div class="fa"><span data-lang="de" class="on">Banking, Versicherung, Industrie, Automotive, Chemie, eCommerce und öffentlicher Sektor – national und international in EMEA, APAC und den USA.</span><span data-lang="en">Banking, insurance, industry, automotive, chemicals, eCommerce and the public sector – nationally and internationally across EMEA, APAC and the US.</span></div></div>
+        <div class="fi"><button class="fq" onclick="tFaq(this)"><span data-lang="de" class="on">Arbeitet Vetrexa remote oder vor Ort?</span><span data-lang="en">Does Vetrexa work remotely or on-site?</span><span class="ficon">+</span></button><div class="fa"><span data-lang="de" class="on">Wir arbeiten überwiegend remote und sind flexibel für Vor-Ort-Einsätze, Workshops und Steering-Termine – deutschlandweit und international.</span><span data-lang="en">We work predominantly remotely while remaining flexible for on-site assignments, workshops and steering meetings – across Germany and internationally.</span></div></div>
+        <div class="fi"><button class="fq" onclick="tFaq(this)"><span data-lang="de" class="on">Welche Zertifizierungen bringt das Team mit?</span><span data-lang="en">What certifications does the team hold?</span><span class="ficon">+</span></button><div class="fa"><span data-lang="de" class="on">Quadient Inspire Expert Certified (alle Berater), NEXIS Silver Partner, COBIT 5 Foundation & Approved Trainer, ITIL Foundation, Scrum Master (PSM I), Product Owner (PSPO I), SAFe.</span><span data-lang="en">Quadient Inspire Expert Certified (all consultants), NEXIS Silver Partner, COBIT 5 Foundation & Approved Trainer, ITIL Foundation, Scrum Master (PSM I), Product Owner (PSPO I), SAFe.</span></div></div>
+      </div>
+    </div>
+  </section>
+</article>
+</main>
+
+<!-- ═══════════════ PAGE: IMPRINT ═══════════════ -->
+<main class="page" id="page-imprint">
+<article>
+  <div class="sub-hero">
+    <div class="hbg"></div><div class="hgrid"></div>
+    <div class="sub-hero-content">
+      <div class="breadcrumb"><a onclick="nav('home')">Vetrexa</a> › Imprint</div>
+      <h1>Imprint</h1>
+    </div>
+  </div>
+  <section>
+    <div class="legal-content">
+      <h2><span data-lang="de" class="on">Angaben gemäß § 5 TMG</span><span data-lang="en">Information according to § 5 TMG</span></h2>
+      <p><strong>Vetrexa GmbH</strong><br/>Lerchenweg 3<br/>D-40789 Monheim am Rhein<br/>Deutschland</p>
+      <h2><span data-lang="de" class="on">Vertreten durch</span><span data-lang="en">Represented by</span></h2>
+      <p>Michael Schmidt (Geschäftsführer)</p>
+      <h2>Kontakt</h2>
+      <p>Telefon: +49 170 473 99 80<br/>E-Mail: <a href="mailto:schmidt@vetrexa.com">schmidt@vetrexa.com</a><br/>Web: <a href="https://www.vetrexa.com">www.vetrexa.com</a></p>
+      <h2><span data-lang="de" class="on">Registereintrag</span><span data-lang="en">Register entry</span></h2>
+      <p><span data-lang="de" class="on">Eingetragen im Handelsregister. Registergericht: zuständiges Amtsgericht. Registernummer: auf Anfrage.</span><span data-lang="en">Registered in the commercial register. Registration court: competent local court. Registration number: on request.</span></p>
+      <h2><span data-lang="de" class="on">Haftungsausschluss</span><span data-lang="en">Disclaimer</span></h2>
+      <p><span data-lang="de" class="on">Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.</span><span data-lang="en">The contents of this website have been created with the greatest possible care. However, we cannot guarantee the accuracy, completeness and timeliness of the content. As a service provider, we are responsible for our own content on these pages in accordance with general laws pursuant to § 7 para. 1 TMG.</span></p>
+      <h2><span data-lang="de" class="on">Urheberrecht</span><span data-lang="en">Copyright</span></h2>
+      <p><span data-lang="de" class="on">Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors.</span><span data-lang="en">The content and works created by the site operators on these pages are subject to German copyright law. Duplication, processing, distribution and any kind of use outside the limits of copyright law require the written consent of the respective author.</span></p>
+      <p style="margin-top:2rem;color:var(--text3);font-size:.82rem">© Vetrexa GmbH 2025. All rights reserved.</p>
+    </div>
+  </section>
+</article>
+</main>
+
+<!-- ═══════════════ PAGE: PRIVACY ═══════════════ -->
+<main class="page" id="page-privacy">
+<article>
+  <div class="sub-hero">
+    <div class="hbg"></div><div class="hgrid"></div>
+    <div class="sub-hero-content">
+      <div class="breadcrumb"><a onclick="nav('home')">Vetrexa</a> › Privacy</div>
+      <h1><span data-lang="de" class="on">Datenschutzerklärung</span><span data-lang="en">Privacy Policy</span></h1>
+    </div>
+  </div>
+  <section>
+    <div class="legal-content">
+      <h2><span data-lang="de" class="on">1. Verantwortlicher</span><span data-lang="en">1. Controller</span></h2>
+      <p><strong>Vetrexa GmbH</strong><br/>Lerchenweg 3, D-40789 Monheim am Rhein<br/>E-Mail: <a href="mailto:schmidt@vetrexa.com">schmidt@vetrexa.com</a><br/>Tel: +49 170 473 99 80</p>
+      <h2><span data-lang="de" class="on">2. Erhebung und Verarbeitung personenbezogener Daten</span><span data-lang="en">2. Collection and processing of personal data</span></h2>
+      <p><span data-lang="de" class="on">Wir erheben personenbezogene Daten nur, soweit dies zur Bereitstellung einer funktionsfähigen Website sowie unserer Inhalte und Leistungen erforderlich ist. Die Erhebung und Verwendung personenbezogener Daten unserer Nutzer erfolgt regelmäßig nur nach Einwilligung des Nutzers.</span><span data-lang="en">We only collect personal data to the extent necessary to provide a functional website and our content and services. The collection and use of personal data of our users takes place regularly only with the consent of the user.</span></p>
+      <h2><span data-lang="de" class="on">3. Kontaktformular</span><span data-lang="en">3. Contact form</span></h2>
+      <p><span data-lang="de" class="on">Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</span><span data-lang="en">If you send us enquiries via the contact form, your details from the enquiry form, including the contact details you provide there, will be stored by us for the purpose of processing the enquiry and in the event of follow-up questions. We do not pass on this data without your consent.</span></p>
+      <h2><span data-lang="de" class="on">4. Ihre Rechte</span><span data-lang="en">4. Your rights</span></h2>
+      <p><span data-lang="de" class="on">Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung sowie ein Recht auf Berichtigung, Sperrung oder Löschung dieser Daten.</span><span data-lang="en">You have the right at any time to free information about your stored personal data, its origin and recipients and the purpose of the data processing, as well as a right to correction, blocking or deletion of this data.</span></p>
+      <h2><span data-lang="de" class="on">5. Cookies</span><span data-lang="en">5. Cookies</span></h2>
+      <p><span data-lang="de" class="on">Unsere Website verwendet keine Tracking-Cookies. Es werden ausschließlich technisch notwendige Cookies eingesetzt, die für den Betrieb der Website erforderlich sind.</span><span data-lang="en">Our website does not use tracking cookies. Only technically necessary cookies are used that are required for the operation of the website.</span></p>
+      <p style="margin-top:2rem;color:var(--text3);font-size:.82rem">© Vetrexa GmbH 2025. All rights reserved.</p>
+    </div>
+  </section>
+</article>
+</main>
+
+<!-- FOOTER (shared) -->
+<footer>
+  <div class="footer-inner">
+    <div style="cursor:pointer" onclick="nav('home')">
+      <svg width="110" height="26" viewBox="0 0 370 82" xmlns="http://www.w3.org/2000/svg">
+        <text x="0" y="55" font-family="'Gill Sans','Calibri Light','Optima',sans-serif" font-size="66" font-weight="300" fill="#2b6cb0" letter-spacing="1">Vetrexa</text>
+        <text x="3" y="75" font-family="'Gill Sans','Calibri Light','Optima',sans-serif" font-size="16" font-weight="300" fill="#8aa5c4" letter-spacing="2.5">Independent Consulting</text>
+        <rect x="300" y="8" width="58" height="4.5" rx="2" fill="#2b6cb0"/>
+        <rect x="312" y="24" width="46" height="4.5" rx="2" fill="#1a365d"/>
+        <rect x="300" y="40" width="58" height="4.5" rx="2" fill="#1a365d"/>
+      </svg>
+    </div>
+    <div class="footer-copy">© Vetrexa GmbH 2025. All rights reserved.</div>
+    <div class="footer-links">
+      <a onclick="nav('imprint')">Imprint</a>
+      <a onclick="nav('privacy')">Privacy</a>
+      <a onclick="nav('contact')">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<div id="pdrop"><strong>📸 Teamfoto einfügen</strong>Bild ziehen oder klicken<input type="file" accept="image/*"/></div>
+
+<script>
+// ── PAGE NAVIGATION ──
+const pages=['home','competence','partners','contact','imprint','privacy'];
+function nav(id){
+  pages.forEach(p=>{
+    document.getElementById('page-'+p)?.classList.toggle('active',p===id);
+    const nl=document.getElementById('nl-'+p);
+    if(nl)nl.classList.toggle('active',p===id);
+  });
+  const titles={
+    home:'Vetrexa GmbH – Independent Consulting | IAM, Security & Digital Transformation',
+    competence:'Kompetenz – IAM, Strategy, PMO, Managed Services | Vetrexa GmbH',
+    partners:'Partner – Quadient & NEXIS | Vetrexa GmbH',
+    contact:'Kontakt – Vetrexa GmbH | Monheim am Rhein',
+    imprint:'Impressum | Vetrexa GmbH',
+    privacy:'Datenschutz | Vetrexa GmbH'
+  };
+  document.title=titles[id]||titles.home;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ── MOBILE MENU ──
+function toggleMenu(){
+  document.getElementById('mmenu').classList.toggle('open');
+  document.getElementById('hbtn').classList.toggle('open');
+}
+function closeMenu(){
+  document.getElementById('mmenu').classList.remove('open');
+  document.getElementById('hbtn').classList.remove('open');
+}
+
+// ── LANGUAGE ──
+function setLang(l){
+  document.querySelectorAll('[data-lang]').forEach(el=>el.classList.toggle('on',el.dataset.lang===l));
+  document.querySelectorAll('.lb').forEach(b=>b.classList.toggle('on',b.textContent.toLowerCase()===l));
+  document.documentElement.lang=l;
+}
+
+// ── FAQ ──
+function tFaq(btn){
+  const a=btn.nextElementSibling;
+  const open=a.classList.contains('open');
+  document.querySelectorAll('.fa').forEach(x=>x.classList.remove('open'));
+  document.querySelectorAll('.fq').forEach(x=>x.classList.remove('open'));
+  if(!open){a.classList.add('open');btn.classList.add('open');}
+}
+
+// ── ABOUT GRID RESPONSIVE ──
+function checkAbout(){
+  const g=document.querySelector('.about-inner-grid');
+  if(!g)return;
+  g.style.gridTemplateColumns=window.innerWidth<820?'1fr':'1fr 1fr';
+}
+window.addEventListener('resize',checkAbout);
+checkAbout();
+
+// ── TEAM PHOTO ──
+(function(){
+  const cached=sessionStorage.getItem('vt_photo');
+  if(cached){applyPhoto(cached);return;}
+  document.getElementById('pdrop').querySelector('input').addEventListener('change',e=>{
+    const f=e.target.files[0];if(!f)return;
+    const r=new FileReader();
+    r.onload=ev=>{sessionStorage.setItem('vt_photo',ev.target.result);applyPhoto(ev.target.result);};
+    r.readAsDataURL(f);
+  });
+  function applyPhoto(d){
+    document.querySelectorAll('.ef').forEach(el=>el.style.backgroundImage=`url("${d}")`);
+    document.getElementById('pdrop')?.remove();
+  }
+})();
+</script>
+</body>
+</html>
