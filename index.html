@@ -207,11 +207,6 @@ footer{background:var(--bg2);border-top:1px solid var(--bdr);padding:2.2rem 6%}
 [data-lang]{display:none}[data-lang].on{display:block}
 span[data-lang]{display:none}span[data-lang].on{display:inline}
 
-/* PHOTO DROP */
-#pdrop{position:fixed;bottom:1.4rem;right:1.4rem;background:var(--bg3);border:1px dashed rgba(43,108,176,.45);border-radius:12px;padding:.9rem 1.2rem;z-index:999;max-width:230px;font-size:.78rem;color:var(--text2);cursor:pointer}
-#pdrop strong{display:block;color:var(--vb2);font-size:.82rem;margin-bottom:.2rem}
-#pdrop input{position:absolute;inset:0;opacity:0;cursor:pointer}
-
 /* RESPONSIVE */
 @media(max-width:900px){
   .cgrid{grid-template-columns:repeat(2,1fr)}
@@ -744,8 +739,6 @@ span[data-lang]{display:none}span[data-lang].on{display:inline}
   </div>
 </footer>
 
-<div id="pdrop"><strong>📸 Teamfoto einfügen</strong>Bild ziehen oder klicken<input type="file" accept="image/*"/></div>
-
 <script>
 // ── PAGE NAVIGATION ──
 const pages=['home','competence','partners','contact','imprint','privacy'];
@@ -838,21 +831,6 @@ checkAbout();
   });
 })();
 
-// ── TEAM PHOTO ──
-(function(){
-  const cached=sessionStorage.getItem('vt_photo');
-  if(cached){applyPhoto(cached);return;}
-  document.getElementById('pdrop').querySelector('input').addEventListener('change',e=>{
-    const f=e.target.files[0];if(!f)return;
-    const r=new FileReader();
-    r.onload=ev=>{sessionStorage.setItem('vt_photo',ev.target.result);applyPhoto(ev.target.result);};
-    r.readAsDataURL(f);
-  });
-  function applyPhoto(d){
-    document.querySelectorAll('.ef').forEach(el=>el.style.backgroundImage=`url("${d}")`);
-    document.getElementById('pdrop')?.remove();
-  }
-})();
 </script>
 </body>
 </html>
