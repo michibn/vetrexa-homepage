@@ -633,19 +633,21 @@ span[data-lang]{display:none}span[data-lang].on{display:inline}
         <div class="cd"><span style="color:var(--vb2)">📞</span><span>+49 170 473 99 80</span></div>
         <div class="cd"><span style="color:var(--vb2)">🌐</span><a href="https://www.vetrexa.com" style="color:var(--text2);text-decoration:none">www.vetrexa.com</a></div>
       </div>
-      <div class="cform">
+      <form class="cform" id="cform" action="./sendmail.php" method="post" novalidate>
         <div class="frow">
-          <div class="fg"><label><span data-lang="de" class="on">Vorname</span><span data-lang="en">First name</span></label><input type="text" placeholder="Max"/></div>
-          <div class="fg"><label><span data-lang="de" class="on">Nachname</span><span data-lang="en">Last name</span></label><input type="text" placeholder="Mustermann"/></div>
+          <div class="fg"><label><span data-lang="de" class="on">Vorname</span><span data-lang="en">First name</span></label><input type="text" name="first" placeholder="Max" required/></div>
+          <div class="fg"><label><span data-lang="de" class="on">Nachname</span><span data-lang="en">Last name</span></label><input type="text" name="last" placeholder="Mustermann" required/></div>
         </div>
-        <div class="fg"><label>E-Mail</label><input type="email" placeholder="max@firma.de"/></div>
-        <div class="fg"><label><span data-lang="de" class="on">Unternehmen</span><span data-lang="en">Company</span></label><input type="text" placeholder="Muster GmbH"/></div>
+        <div class="fg"><label>E-Mail</label><input type="email" name="email" placeholder="max@firma.de" required/></div>
+        <div class="fg"><label><span data-lang="de" class="on">Unternehmen</span><span data-lang="en">Company</span></label><input type="text" name="company" placeholder="Muster GmbH"/></div>
         <div class="fg"><label><span data-lang="de" class="on">Betreff</span><span data-lang="en">Subject</span></label>
-          <select><option>IAM &amp; Security</option><option>Strategy &amp; Consulting</option><option>Projektmanagement</option><option>Managed Services</option><option>Output Management</option><option>Allgemeine Anfrage</option></select>
+          <select name="subject"><option>IAM &amp; Security</option><option>Strategy &amp; Consulting</option><option>Projektmanagement</option><option>Managed Services</option><option>Output Management</option><option>Allgemeine Anfrage</option></select>
         </div>
-        <div class="fg"><label><span data-lang="de" class="on">Nachricht</span><span data-lang="en">Message</span></label><textarea placeholder="..."></textarea></div>
-        <button class="bsub"><span data-lang="de" class="on">Nachricht senden →</span><span data-lang="en">Send message →</span></button>
-      </div>
+        <div class="fg"><label><span data-lang="de" class="on">Nachricht</span><span data-lang="en">Message</span></label><textarea name="message" placeholder="..." required></textarea></div>
+        <div style="position:absolute;left:-9999px" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"/></label></div>
+        <button class="bsub" type="submit"><span data-lang="de" class="on">Nachricht senden →</span><span data-lang="en">Send message →</span></button>
+        <div id="fmsg" style="margin-top:1rem;font-size:.86rem;line-height:1.5;display:none;padding:.8rem 1rem;border-radius:8px"></div>
+      </form>
     </div>
 
     <!-- FAQ inline on contact page -->
@@ -799,6 +801,42 @@ function checkAbout(){
 }
 window.addEventListener('resize',checkAbout);
 checkAbout();
+
+// ── CONTACT FORM ──
+(function(){
+  const f=document.getElementById('cform');if(!f)return;
+  const msg=document.getElementById('fmsg');
+  const btn=f.querySelector('.bsub');
+  const t=(de,en)=>document.documentElement.lang==='en'?en:de;
+  function show(ok,text){
+    msg.style.display='block';
+    msg.style.background=ok?'rgba(74,144,217,.12)':'rgba(220,80,80,.12)';
+    msg.style.border='1px solid '+(ok?'rgba(74,144,217,.35)':'rgba(220,80,80,.35)');
+    msg.style.color=ok?'var(--vl)':'#ff9c9c';
+    msg.textContent=text;
+  }
+  f.addEventListener('submit',async e=>{
+    e.preventDefault();
+    btn.disabled=true;
+    const orig=btn.innerHTML;
+    btn.innerHTML=t('Wird gesendet …','Sending …');
+    msg.style.display='none';
+    try{
+      const r=await fetch(f.action,{method:'POST',body:new FormData(f)});
+      const d=await r.json().catch(()=>({ok:false,error:'Serverfehler'}));
+      if(r.ok&&d.ok){
+        show(true,t('Vielen Dank! Ihre Nachricht ist bei uns angekommen — wir melden uns zeitnah.','Thank you! Your message has been received — we will get back to you shortly.'));
+        f.reset();
+      }else{
+        show(false,d.error||t('Versand fehlgeschlagen. Bitte schreiben Sie direkt an schmidt@vetrexa.com.','Sending failed. Please email schmidt@vetrexa.com directly.'));
+      }
+    }catch(err){
+      show(false,t('Netzwerkfehler. Bitte schreiben Sie direkt an schmidt@vetrexa.com.','Network error. Please email schmidt@vetrexa.com directly.'));
+    }finally{
+      btn.disabled=false;btn.innerHTML=orig;
+    }
+  });
+})();
 
 // ── TEAM PHOTO ──
 (function(){
